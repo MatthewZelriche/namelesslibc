@@ -22,3 +22,14 @@ size_t strlen(const char *s) {
    }
    return byteCount;
 }
+
+int isspace(int c) {
+   switch (c) {
+   case ' ':
+   case '\f':
+   case '\n':
+   case '\t':
+   case '\v': return true;
+   default: return false;
+   }
+}
