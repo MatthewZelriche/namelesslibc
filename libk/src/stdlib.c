@@ -9,6 +9,7 @@
 long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
    uint64_t position = 0;
    bool isNegative   = false;
+   bool noDigits     = true;
 
    while (isspace(*(nptr + position))) { position++; }
 
@@ -45,6 +46,7 @@ long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
    while ((*(nptr + position) >= '0' && *(nptr + position) <= '9') ||
           (*(nptr + position) >= 'A' && *(nptr + position) <= 'Z') ||
           (*(nptr + position) >= 'a' && *(nptr + position) <= 'z')) {
+      noDigits = false;
       if ((*(nptr + position) >= '0' && *(nptr + position) <= '9')) {
          if (*(nptr + position) - '0' > base) {
             return result;
@@ -65,5 +67,17 @@ long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
          position++;
       }
    }
-   return result;
+
+   if (endptr != NULL) {
+      if (noDigits) {
+         endptr = nptr;
+      }
+      endptr = (nptr + position);
+   }
+
+   if (isNegative) {
+      return -result;
+   } else {
+      return result;
+   }
 }
