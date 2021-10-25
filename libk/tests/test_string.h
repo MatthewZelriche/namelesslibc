@@ -86,3 +86,27 @@ void memcpy04_structs(void) {
    TEST_ASSERT_EQUAL_INT(-45, struct1.myInt);
    TEST_ASSERT_EQUAL_PTR(&struct1, result);
 }
+
+void strrev01_oddnumber(void) {
+   char input[6] = "Test!";
+   strrev(input);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("!tseT", input, 6);
+}
+
+void strrev02_evennumber(void) {
+   char input[13] = "This a test\n";
+   strrev(input);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("\ntset a sihT", input, 13);
+}
+
+void strrev03_empty(void) {
+   char input[6] = "";
+   strrev(input);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("", input, 1);
+}
+
+void strrev04_onechar(void) {
+   char input[6] = "a";
+   strrev(input);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("a", input, 2);
+}

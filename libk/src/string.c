@@ -29,7 +29,28 @@ int isspace(int c) {
    case '\f':
    case '\n':
    case '\t':
-   case '\v': return true;
+   case '\v':
+   case '\r': return true;
    default: return false;
    }
+}
+
+char *strrev(char *str) {
+   int length = strlen(str);
+
+   if (length == 0) {
+      return str;
+   }
+   int forward = 0;
+   int reverse = length - 1;
+
+   while (forward < reverse) {
+      char temp    = str[reverse];
+      str[reverse] = str[forward];
+      str[forward] = temp;
+      forward++;
+      reverse--;
+   }
+
+   return str;
 }

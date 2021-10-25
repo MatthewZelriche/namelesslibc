@@ -15,7 +15,7 @@ set(SOURCES "src/string.c"
 
 add_library(namelesslibk ${SOURCES})
 
-target_compile_options(namelesslibk PRIVATE -g -ffreestanding -fno-stack-protector -mno-red-zone -fPIC)
+target_compile_options(namelesslibk PRIVATE -Wall -Wextra -ffreestanding -fno-stack-protector -mno-red-zone -fPIC)
 target_link_options(namelesslibk PRIVATE -g -nostdlib -fPIC)
 
 

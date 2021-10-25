@@ -28,6 +28,11 @@ int main(void) {
    RUN_TEST(memcpy03_copypartial);
    RUN_TEST(memcpy04_structs);
 
+   RUN_TEST(strrev01_oddnumber);
+   RUN_TEST(strrev02_evennumber);
+   RUN_TEST(strrev03_empty);
+   RUN_TEST(strrev04_onechar);
+
    RUN_TEST(strtol01_basicbase10);
    RUN_TEST(strtol02_basicnegativebase10);
    RUN_TEST(strtol03_base0decimal);
@@ -40,5 +45,17 @@ int main(void) {
    RUN_TEST(strtol10_invalidcharptrnullterm);
    RUN_TEST(strtol11_invalidcharptr);
    RUN_TEST(strtol12_nodigits);
+
+   RUN_TEST(abs01_zero);
+   RUN_TEST(abs02_pos);
+   RUN_TEST(abs03_neg);
+
+   RUN_TEST(itoa01);
+   RUN_TEST(itoa02);
+   RUN_TEST(itoa03);
+   RUN_TEST(itoa04);
+   RUN_TEST(itoa05);
+   RUN_TEST(itoa06);
+
    return UNITY_END();
 }

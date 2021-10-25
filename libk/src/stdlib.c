@@ -6,7 +6,7 @@
 #include "../include/libk/string.h"
 
 // TODO: Error checking.
-long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
+long int strtol(const char *nptr, char **endptr, int base) {
    uint64_t position = 0;
    bool isNegative   = false;
    bool noDigits     = true;
@@ -49,19 +49,19 @@ long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
       noDigits = false;
       if ((*(nptr + position) >= '0' && *(nptr + position) <= '9')) {
          if (*(nptr + position) - '0' > base) {
-            return result;
+            break;
          }
          result = (result * base) + (*(nptr + position) - '0');
          position++;
       } else if ((*(nptr + position) >= 'A' && *(nptr + position) <= 'Z')) {
          if (*(nptr + position) - 'A' + 10 > base) {
-            return result;
+            break;
          }
          result = (result * base) + (*(nptr + position) - 'A' + 10);
          position++;
       } else if ((*(nptr + position) >= 'a' && *(nptr + position) <= 'z')) {
          if (*(nptr + position) - 'a' + 10 > base) {
-            return result;
+            break;
          }
          result = (result * base) + (*(nptr + position) - 'a' + 10);
          position++;
@@ -70,9 +70,9 @@ long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
 
    if (endptr != NULL) {
       if (noDigits) {
-         endptr = nptr;
+         *endptr = nptr;
       }
-      endptr = (nptr + position);
+      *endptr = ((uint8_t *)nptr + position);
    }
 
    if (isNegative) {
@@ -80,4 +80,54 @@ long int strtol(const char *restrict nptr, char **restrict endptr, int base) {
    } else {
       return result;
    }
+}
+
+int abs(int val) {
+   return __builtin_abs(val);
+}
+
+char *itoa(int value, char *str, int base) {
+   bool isNegative = false;
+   uint8_t bufPos  = 0;
+
+   if (value == 0) {
+      str[bufPos] = '0';
+      bufPos++;
+   }
+
+   if (base == 10) {
+      if (value < 0) {
+         isNegative = true;
+      }
+   }
+
+   unsigned int convertedVal = 0;
+   if (base != 10) {
+      convertedVal = (unsigned int)value;
+   } else {
+      convertedVal = (unsigned int)abs(value);
+   }
+
+   while (convertedVal > 0) {
+      uint8_t digit = convertedVal % base;
+      char code     = digit + '0';
+
+      if (code > '9') {
+         code += 7;
+      }
+
+      str[bufPos] = code;
+      bufPos++;
+
+      convertedVal /= base;
+   }
+
+   if (isNegative) {
+      str[bufPos] = '-';
+      bufPos++;
+   }
+
+   str[bufPos] = '\0';
+   strrev(str);
+   return str;
 }

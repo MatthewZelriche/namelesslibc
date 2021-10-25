@@ -49,8 +49,8 @@ void strtol09_leadingwhitespace(void) {
 }
 
 void strtol10_invalidcharptrnullterm(void) {
-   char* result2 = NULL;
-   int result    = strtol("1444", &result2, 10);
+   char* result2;
+   int result = strtol("1444", &result2, 10);
    TEST_ASSERT_EQUAL_INT(1444, result);
    TEST_ASSERT_EQUAL_CHAR('\0', *result2);
 }
@@ -67,5 +67,53 @@ void strtol12_nodigits(void) {
    const char* test = "       tfgh";
    int result       = strtol(test, &result2, 10);
    TEST_ASSERT_EQUAL_INT(0, result);
-   TEST_ASSERT_EQUAL_PTR(test, result2);
+   TEST_ASSERT_EQUAL_PTR(test + 7, result2);
+}
+
+void abs01_zero(void) {
+   TEST_ASSERT_EQUAL_INT(0, abs(0));
+}
+
+void abs02_pos(void) {
+   TEST_ASSERT_EQUAL_INT(578, abs(578));
+}
+
+void abs03_neg(void) {
+   TEST_ASSERT_EQUAL_INT(467, abs(-467));
+}
+
+void itoa01(void) {
+   char input[22];
+   itoa(1567, input, 10);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("1567", input, 5);
+}
+
+void itoa02(void) {
+   char input[22];
+   itoa(0, input, 10);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("0", input, 2);
+}
+
+void itoa03(void) {
+   char input[22];
+   itoa(-401, input, 10);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("-401", input, 5);
+}
+
+void itoa04(void) {
+   char input[22];
+   itoa(242, input, 16);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("F2", input, 3);
+}
+
+void itoa05(void) {
+   char input[22];
+   itoa(-57114, input, 16);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("FFFF20E6", input, 9);
+}
+
+void itoa06(void) {
+   char input[22];
+   itoa(28926658, input, 36);
+   TEST_ASSERT_EQUAL_CHAR_ARRAY("H7ZYA", input, 6);
 }

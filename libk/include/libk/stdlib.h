@@ -11,6 +11,12 @@ extern "C" {
  */
 long int strtol(const char *nptr, char **endptr, int base);
 
+/** Compliance Status: Should be fully compliant. */
+int abs(int val);
+
+/** Nonstandard */
+char *itoa(int value, char *str, int base);
+
 #ifdef __cplusplus
 }
 #endif
