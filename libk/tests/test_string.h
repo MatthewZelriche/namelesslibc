@@ -30,21 +30,6 @@ void strlen05_controlcharacter(void) {
    TEST_ASSERT_EQUAL_INT(3, result);
 }
 
-void isspace01_space(void) {
-   int result = isspace(' ');
-   TEST_ASSERT_TRUE(result);
-}
-
-void isspace02_special(void) {
-   int result = isspace('\r');
-   TEST_ASSERT_TRUE(result);
-}
-
-void isspace03_nonspace(void) {
-   int result = isspace('g');
-   TEST_ASSERT_FALSE(result);
-}
-
 void memcpy01_strings(void) {
    char string2[10] = "Basic Test";
    char string1[10] = "asdfghjkl;";

@@ -1,3 +1,4 @@
+#include "test_ctype.h"
 #include "test_stdlib.h"
 #include "test_string.h"
 #include "unity.h"
@@ -22,6 +23,11 @@ int main(void) {
    RUN_TEST(isspace01_space);
    RUN_TEST(isspace02_special);
    RUN_TEST(isspace03_nonspace);
+
+   RUN_TEST(isdigit01_zero);
+   RUN_TEST(isdigit02_middle);
+   RUN_TEST(isdigit03_last);
+   RUN_TEST(isdigit04_nondigit);
 
    RUN_TEST(memcpy01_strings);
    RUN_TEST(memcpy02_copynothing);

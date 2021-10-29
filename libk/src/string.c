@@ -3,7 +3,7 @@
 #include "stdbool.h"
 
 void *memcpy(void *restrict dest, void *restrict src, size_t n) {
-   for (int i = 0; i < n; i++) { ((char *)dest)[i] = ((char *)src)[i]; }
+   for (size_t i = 0; i < n; i++) { ((char *)dest)[i] = ((char *)src)[i]; }
 
    return dest;
 }
@@ -21,18 +21,6 @@ size_t strlen(const char *s) {
       bufPos++;
    }
    return byteCount;
-}
-
-int isspace(int c) {
-   switch (c) {
-   case ' ':
-   case '\f':
-   case '\n':
-   case '\t':
-   case '\v':
-   case '\r': return true;
-   default: return false;
-   }
 }
 
 char *strrev(char *str) {

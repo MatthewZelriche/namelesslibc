@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "../include/libk/ctype.h"
 #include "../include/libk/string.h"
 
 // TODO: Error checking.
