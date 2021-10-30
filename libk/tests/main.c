@@ -34,6 +34,13 @@ int main(void) {
    RUN_TEST(memcpy03_copypartial);
    RUN_TEST(memcpy04_structs);
 
+   RUN_TEST(strcmp01_equal);
+   RUN_TEST(strcmp02_differentCase);
+   RUN_TEST(strcmp03_greaterThan);
+   RUN_TEST(strcmp04_lessThan);
+   RUN_TEST(strcmp05);
+   RUN_TEST(strcmp06);
+
    RUN_TEST(strrev01_oddnumber);
    RUN_TEST(strrev02_evennumber);
    RUN_TEST(strrev03_empty);

@@ -72,6 +72,36 @@ void memcpy04_structs(void) {
    TEST_ASSERT_EQUAL_PTR(&struct1, result);
 }
 
+void strcmp01_equal() {
+   int result = strcmp("Spaghetti", "Spaghetti");
+   TEST_ASSERT_EQUAL_INT(0, result);
+}
+
+void strcmp02_differentCase() {
+   int result = strcmp("Spaghetti", "spaghetti");
+   TEST_ASSERT_EQUAL_INT(-1, result);
+}
+
+void strcmp03_greaterThan() {
+   int result = strcmp("spaghetti", "dog");
+   TEST_ASSERT_EQUAL_INT(1, result);
+}
+
+void strcmp04_lessThan() {
+   int result = strcmp("cat", "dog");
+   TEST_ASSERT_EQUAL_INT(-1, result);
+}
+
+void strcmp05() {
+   int result = strcmp("dog", "dog2");
+   TEST_ASSERT_EQUAL_INT(-1, result);
+}
+
+void strcmp06() {
+   int result = strcmp("dog3", "dog");
+   TEST_ASSERT_EQUAL_INT(1, result);
+}
+
 void strrev01_oddnumber(void) {
    char input[6] = "Test!";
    strrev(input);

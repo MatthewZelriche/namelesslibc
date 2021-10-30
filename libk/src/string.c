@@ -23,6 +23,27 @@ size_t strlen(const char *s) {
    return byteCount;
 }
 
+int strcmp(const char *s1, const char *s2) {
+   size_t length = 0;
+   if (strlen(s1) <= strlen(s2)) {
+      length = strlen(s2);
+   } else {
+      length = strlen(s1);
+   }
+
+   for (int i = 0; i < length; i++) {
+      if (s1[i] == s2[i]) {
+         continue;
+      } else if (s1[i] < s2[i]) {
+         return -1;
+      } else {
+         return 1;
+      }
+   }
+
+   return 0;
+}
+
 char *strrev(char *str) {
    int length = strlen(str);
 

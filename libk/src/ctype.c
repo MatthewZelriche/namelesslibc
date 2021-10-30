@@ -21,3 +21,19 @@ int isdigit(int c) {
       return false;
    }
 }
+
+int isupper(int c) {
+   if (c >= 'A' && c <= 'Z') {
+      return true;
+   } else {
+      return false;
+   }
+}
+
+int tolower(int c) {
+   if (isupper(c)) {
+      return c + 32;
+   } else {
+      return c;
+   }
+}
